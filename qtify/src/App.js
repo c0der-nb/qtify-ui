@@ -1,11 +1,9 @@
-import Button from './components/Button/Button';
-import Search from './components/Search/Search';
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
-    <div className="App">
-      <Button>Give Feedback</Button>
-      <Search placeholder='Select a album of your choice' />
+    <div>
+      <Navbar />
     </div>
   );
 }
