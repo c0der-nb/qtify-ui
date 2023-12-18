@@ -8,7 +8,7 @@ function Navbar(props) {
     return (
         <nav className={styles.navbar}>
             <Logo />
-            <Search placeholder={'Select a album of your choice'} />
+            <Search placeholder={'Search a album of your choice'} />
             <Button>Give Feedback</Button>
         </nav>
     )
