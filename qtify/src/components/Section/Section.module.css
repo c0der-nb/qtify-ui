@@ -1,5 +1,6 @@
 .section {
     margin: 0px 31px 0px 31px;
+    width: -webkit-fill-available;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -41,6 +42,7 @@
 }
 
 .album-grid {
+    width: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;

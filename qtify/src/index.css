@@ -27,6 +27,10 @@ code {
   margin: 0;
 }
 
+.swiper-slide {
+  width: auto !important;
+}
+
 html,
 body {
   height: 100%;

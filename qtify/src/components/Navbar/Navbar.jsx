@@ -4,7 +4,7 @@ import Search from '../Search/Search';
 import Button from '../Button/Button';
 import Logo from '../Logo/Logo';
 
-function Navbar(props) {
+function Navbar({searchData}) {
     return (
         <nav className={styles.navbar}>
             <Logo />
