@@ -4,3 +4,9 @@
     align-items: flex-start;
     gap: 32px;
 }
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-primary);
+}

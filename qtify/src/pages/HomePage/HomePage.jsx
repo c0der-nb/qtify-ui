@@ -14,6 +14,7 @@ function HomePage() {
             <div className={styles.wrapper}>
                 <Section title="Top Albums" data={topAlbums} type="album" />
                 <Section title="New Albums" data={newAlbums} type="album" />
+                <div className={styles.divider}></div>
                 <Section 
                     title="Songs" 
                     data={songs} 
