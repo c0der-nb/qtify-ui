@@ -50,3 +50,7 @@
     row-gap: 24px;
     column-gap: 40px;
 }
+
+.filter-wrapper {
+    margin-top: 0px;
+}

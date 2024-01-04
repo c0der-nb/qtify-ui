@@ -1,14 +1,9 @@
 import Navbar from "./components/Navbar/Navbar";
 import { useState, useEffect } from  "react";
 import { Outlet } from "react-router-dom";
-import { fetchFilters, fetchNewAlbums, fetchSongs, fetchTopAlbums } from "./api/api";
-
-export const config = {
-  endpoint: "https://qtify-backend-labs.crio.do/albums"
-};
+import { fetchNewAlbums, fetchSongs, fetchTopAlbums } from "./api/api";
 
 function App() {
-  const [searchData, useSearchData] = useState();
   const [data, setData] = useState({});
 
   const generateData = (key, source) => {

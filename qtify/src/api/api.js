@@ -24,7 +24,7 @@ export const fetchNewAlbums = async () => {
 
 export const fetchSongs = async () => {
     try {
-        const apiResponse = await axios.get(API_ENDPOINT+"/albums/songs");
+        const apiResponse = await axios.get(API_ENDPOINT+"/songs");
         return apiResponse.data;
     }
     catch (e) {
@@ -34,7 +34,7 @@ export const fetchSongs = async () => {
 
 export const fetchFilters = async () => {
     try {
-        const apiResponse = await axios.get(API_ENDPOINT+"/albums/genres");
+        const apiResponse = await axios.get(API_ENDPOINT+"/genres");
         return apiResponse.data;
     }
     catch (e) {

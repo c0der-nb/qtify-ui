@@ -1,35 +1,58 @@
 import styles from "./Section.module.css";
 import Card from "../Card/Card";
 import Carousel from "../Carousel/Carousel";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Filters from "../Filters/Filters";
 
-function Section({ title, data, type }) {
+function Section({ title, data, filterSource, type }) {
+  const [filters, setFilters] = useState([{key: 'all', label: 'All'}]);
+  const [selectedFilterIndex, setSelectedFilterIndex] = useState(0);
+
   const [carouselToggle, setCarouselToggle] = useState(true);
 
   const handleToggle = () => {
     setCarouselToggle((prevState) => !prevState);
   }
 
+  useEffect(() => {
+    if (filterSource) {
+      filterSource().then(response => {
+        const {data} = response;
+        setFilters([...filters, ...data]);
+      })
+    }
+  }, [])
+
+  const showFilters = filters.length > 1;
+  const cardsToRender = data.filter((card) => showFilters && selectedFilterIndex !== 0 ? card.genre.key === filters[selectedFilterIndex].key : card);
+
   return (
     <div className={styles.section}>
       <div className={styles["album-section"]}>
         <div className={styles["album-heading"]}>
           <p>{title}</p>
-          <button onClick={handleToggle} className={styles["btn-show-collapse"]}>{!carouselToggle ? "Collapse" : "Show All"}</button>
+          {type === 'album' && <button onClick={handleToggle} className={styles["btn-show-collapse"]}>{!carouselToggle ? "Collapse" : "Show All"}</button>}
         </div>
+        {showFilters && 
+          <div className={styles['filter-wrapper']}>
+            <Filters
+              filters={filters}
+              selectedFilterIndex={selectedFilterIndex}
+              setSelectedFilterIndex={setSelectedFilterIndex}
+            />
+          </div>}
         <div className={styles["album-grid"]}>
           {!carouselToggle
-            ? data.map((album) => (
+            ? cardsToRender.map((album) => (
                 <Card
-                  image={album.image}
-                  follows={album.follows}
-                  title={album.title}
+                  data={album}
+                  type={type}
                 />
               ))
             :
               <Carousel 
-                data={data}
-                renderComponent={(ele) => <Card image={ele.image} follows={ele.follows} title={ele.title}/>}
+                data={cardsToRender}
+                renderComponent={(ele) => <Card data={ele} type={type}/>}
               />
             }
         </div>
