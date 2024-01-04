@@ -5,7 +5,7 @@ import Tooltip from '@mui/material/Tooltip';
 function Card({ data, type }) {
   if (type === 'album') {
     return (
-      <Tooltip title={data.songs.length+' songs'} placement="top">
+      <Tooltip title={data.songs.length+' songs'} arrow placement="top">
         <div className={styles.card}>
           <div className={styles["card-img-pill"]}>
             <img src={data.image} className={styles["card-image"]} alt={data.title} />
